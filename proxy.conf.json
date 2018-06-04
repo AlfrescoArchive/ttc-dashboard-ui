@@ -1,0 +1,10 @@
+{
+  "/activiti-api": {
+    "target": "http://ttc-infra-gateway.jx-staging.35.176.242.136.nip.io",
+    "secure": false,
+    "pathRewrite": {
+      "^/activiti-api": ""
+    },
+    "changeOrigin": true
+  }
+}

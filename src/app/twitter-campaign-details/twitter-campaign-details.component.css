@@ -1,0 +1,16 @@
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+table {
+  width: 100%;
+}
+
+mat-grid-tile {
+  background: lightblue;
+  overflow-y: auto;
+}
+
+mat-grid-tile ::ng-deep .mat-figure {
+  display: block !important;
+}
