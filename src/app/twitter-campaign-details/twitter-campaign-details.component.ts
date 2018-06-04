@@ -16,6 +16,7 @@ export class TwitterCampaignDetailsComponent implements OnInit {
 
   negativeFeeds: any;
   positiveFeeds: any;
+  neutralFeeds: any;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -25,7 +26,7 @@ export class TwitterCampaignDetailsComponent implements OnInit {
   ngOnInit() {
     this.getPositiveTweets();
     this.getNegativeTweets();
-
+    this.getNeutralTweets();
   }
 
   private getNegativeTweets() {
@@ -48,6 +49,20 @@ export class TwitterCampaignDetailsComponent implements OnInit {
       this.twitterClientService.getPositiveTweets(params.id).subscribe((data: any[]) => {
           this.positiveFeeds = new MatTableDataSource(data);
           this.positiveFeeds.sort = this.sort;
+
+        }, error => {
+          console.log(error);
+        }
+      );
+    });
+  }
+
+  private getNeutralTweets() {
+    this.route.params.subscribe(params => {
+      console.log(params.id);
+      this.twitterClientService.getNeutralTweets(params.id).subscribe((data: any[]) => {
+          this.neutralFeeds = new MatTableDataSource(data);
+          this.neutralFeeds.sort = this.sort;
 
         }, error => {
           console.log(error);

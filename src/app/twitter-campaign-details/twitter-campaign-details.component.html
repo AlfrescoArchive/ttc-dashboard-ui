@@ -1,5 +1,30 @@
-<mat-grid-list cols="3" rowHeight="1:1">
+<mat-grid-list cols="3" rowHeight="60">
   <mat-grid-tile>
+
+    <mat-card class="positive">Positives
+      <mat-icon class="align-right">mood</mat-icon>
+    </mat-card>
+
+  </mat-grid-tile>
+  <mat-grid-tile>
+
+    <mat-card class="neutral">Neutral
+      <mat-icon class="align-right">sentiment_satisfied</mat-icon>
+    </mat-card>
+
+  </mat-grid-tile>
+  <mat-grid-tile>
+
+    <mat-card class="negative">Negatives
+      <mat-icon class="align-right">mood_bad</mat-icon>
+    </mat-card>
+
+  </mat-grid-tile>
+</mat-grid-list>
+
+<mat-grid-list cols="3" rowHeight="1:1">
+  <mat-grid-tile class="list">
+
     <table mat-table [dataSource]="positiveFeeds" matSort class="mat-elevation-z8">
 
       <ng-container matColumnDef="nroOfTweets">
@@ -16,8 +41,30 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+
   </mat-grid-tile>
-  <mat-grid-tile>
+  <mat-grid-tile class="list">
+
+    <table mat-table [dataSource]="neutralFeeds" matSort class="mat-elevation-z8">
+
+      <ng-container matColumnDef="nroOfTweets">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> No.</th>
+        <td mat-cell *matCellDef="let element"> {{element.nroOfTweets}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="userName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name</th>
+        <td mat-cell *matCellDef="let element"> {{element.userName}}</td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+  </mat-grid-tile>
+  <mat-grid-tile class="list">
+
     <table mat-table [dataSource]="negativeFeeds" matSort class="mat-elevation-z8">
 
       <ng-container matColumnDef="nroOfTweets">
@@ -34,10 +81,11 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+
   </mat-grid-tile>
-  <mat-grid-tile>3</mat-grid-tile>
   <mat-grid-tile>4</mat-grid-tile>
   <mat-grid-tile>5</mat-grid-tile>
+  <mat-grid-tile>6</mat-grid-tile>
 
 </mat-grid-list>
 

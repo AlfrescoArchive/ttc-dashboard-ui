@@ -5,3 +5,12 @@
 .header-spacer {
   flex: 1 1 auto;
 }
+
+mat-toolbar {
+  background-color: #1B95E0;
+  color: #ffffff;
+}
+
+.content {
+  padding: 2px 2px 2px 2px;
+}

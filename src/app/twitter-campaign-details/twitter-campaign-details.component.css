@@ -6,11 +6,29 @@ table {
   width: 100%;
 }
 
-mat-grid-tile {
+.list {
   background: lightblue;
   overflow-y: auto;
+  padding-left: 2px;
+  padding-right: 2px;
 }
 
 mat-grid-tile ::ng-deep .mat-figure {
   display: block !important;
+}
+
+.align-right {
+  float: right;
+}
+
+.positive {
+  background-color: #76e28d;
+}
+
+.negative {
+  background-color: #e27676;
+}
+
+.neutral {
+  background-color: #fdf3dd;
 }
