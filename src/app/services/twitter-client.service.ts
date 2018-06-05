@@ -5,8 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class TwitterClientService {
 
-  BASE_URL = 'http://localhost:8080/activiti-api';
-
+  BASE_URL = '/activiti-api';
 
   constructor(private http: HttpClient) {
 
