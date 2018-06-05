@@ -17,6 +17,7 @@ export class TwitterCampaignDetailsComponent implements OnInit {
   negativeFeeds: any;
   positiveFeeds: any;
   neutralFeeds: any;
+  processedFeeds: any;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -24,50 +25,56 @@ export class TwitterCampaignDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getPositiveTweets();
-    this.getNegativeTweets();
-    this.getNeutralTweets();
-  }
-
-  private getNegativeTweets() {
     this.route.params.subscribe(params => {
-      console.log(params.id);
-      this.twitterClientService.getNegativeTweets(params.id).subscribe((data: any[]) => {
-          this.negativeFeeds = new MatTableDataSource(data);
-          this.negativeFeeds.sort = this.sort;
-
-        }, error => {
-          console.log(error);
-        }
-      );
+      this.getPositiveTweets(params.id);
+      this.getNegativeTweets(params.id);
+      this.getNeutralTweets(params.id);
+      this.getProcessedTweets(params.id);
     });
   }
 
-  private getPositiveTweets() {
-    this.route.params.subscribe(params => {
-      console.log(params.id);
-      this.twitterClientService.getPositiveTweets(params.id).subscribe((data: any[]) => {
-          this.positiveFeeds = new MatTableDataSource(data);
-          this.positiveFeeds.sort = this.sort;
+  private getNegativeTweets(id: any) {
+    this.twitterClientService.getNegativeTweets(id).subscribe((data: any[]) => {
+        this.negativeFeeds = new MatTableDataSource(data);
+        this.negativeFeeds.sort = this.sort;
 
-        }, error => {
-          console.log(error);
-        }
-      );
-    });
+      }, error => {
+        console.log(error);
+      }
+    );
+
   }
 
-  private getNeutralTweets() {
-    this.route.params.subscribe(params => {
-      console.log(params.id);
-      this.twitterClientService.getNeutralTweets(params.id).subscribe((data: any[]) => {
-          this.neutralFeeds = new MatTableDataSource(data);
-          this.neutralFeeds.sort = this.sort;
+  private getPositiveTweets(id: any) {
+    this.twitterClientService.getPositiveTweets(id).subscribe((data: any[]) => {
+        this.positiveFeeds = new MatTableDataSource(data);
+        this.positiveFeeds.sort = this.sort;
 
-        }, error => {
-          console.log(error);
-        }
-      );
-    });
+      }, error => {
+        console.log(error);
+      }
+    );
+  }
+
+  private getNeutralTweets(id: any) {
+    this.twitterClientService.getNeutralTweets(id).subscribe((data: any[]) => {
+        this.neutralFeeds = new MatTableDataSource(data);
+        this.neutralFeeds.sort = this.sort;
+
+      }, error => {
+        console.log(error);
+      }
+    );
+  }
+
+  private getProcessedTweets(id: any) {
+    this.twitterClientService.getProcessedTweets(id).subscribe((data: any[]) => {
+        this.processedFeeds = new MatTableDataSource(data);
+        this.processedFeeds.sort = this.sort;
+
+      }, error => {
+        console.log(error);
+      }
+    );
   }
 }

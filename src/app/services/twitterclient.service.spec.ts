@@ -8,8 +8,4 @@ describe('TwitterClientService', () => {
       providers: [TwitterClientService]
     });
   });
-
-  it('should ...', inject([TwitterClientService], (service: TwitterClientService) => {
-    expect(service).toBeTruthy();
-  }));
 });

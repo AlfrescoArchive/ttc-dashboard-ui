@@ -27,4 +27,8 @@ export class TwitterClientService {
   getNeutralTweets(id: String): Observable<any> {
     return this.http.get(this.BASE_URL + '/ttc-connectors-ranking/rank/' + id + '/neutral');
   }
+
+  getProcessedTweets(id: String): Observable<any> {
+    return this.http.get(this.BASE_URL + '/ttc-query-campaign/processed/' + id + '?sort=lastModified,desc');
+  }
 }
