@@ -15,12 +15,12 @@ service:
     fabric8.io/expose: "true"
 resources:
   limits:
-    cpu: 400m
-    memory: 256Mi
+    cpu: 500m
+    memory: 500Mi
   requests:
-    cpu: 200m
-    memory: 128Mi
-probePath: /
+    cpu: 500m
+    memory: 256Mi
+probePath: /ttc-dashboard-ui/
 livenessProbe:
   initialDelaySeconds: 60
   periodSeconds: 10
