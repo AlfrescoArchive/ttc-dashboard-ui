@@ -34,4 +34,16 @@ export class TwitterClientService {
   getRewardsTweets(id: String): Observable<any> {
     return this.http.get(this.BASE_URL + '/ttc-connectors-reward/rewards/' + id);
   }
+
+  startCampaign(): Observable<any> {
+    return this.http.post(this.BASE_URL + '/ttc-connectors-dummytwitter/feed/stop', null);
+  }
+
+  stopCampaign(): Observable<any> {
+    return this.http.post(this.BASE_URL + '/ttc-connectors-dummytwitter/feed/start', null);
+  }
+
+  statusCampaign(): Observable<any> {
+    return this.http.get(this.BASE_URL + '/ttc-connectors-dummytwitter/feed');
+  }
 }

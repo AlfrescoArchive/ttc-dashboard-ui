@@ -14,7 +14,7 @@ export class TwitterCampaignDetailsComponent implements OnInit {
 
   displayedColumns = ['nroOfTweets', 'userName'];
   displayedColumnsProcessed = ['text', 'author', 'lang', 'attitude', 'timestamp'];
-  displayedColumnsReward: ['campaignName', 'nroOfTweets', 'userName', 'rewardsText', 'rewardDate'];
+  displayedColumnsReward = ['campaignName', 'nroOfTweets', 'userName', 'rewardsText', 'rewardDate'];
 
   negativeFeeds: any;
   positiveFeeds: any;

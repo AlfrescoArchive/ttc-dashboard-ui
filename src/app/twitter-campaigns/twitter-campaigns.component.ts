@@ -11,10 +11,14 @@ export class TwitterCampaignsComponent implements OnInit {
 
   campaigns: any[];
 
+  isCampaignsLoading = true;
+
   constructor(private twitterClientService: TwitterClientService, private router: Router) {
     twitterClientService.getCampaigns().subscribe((data: any[]) => {
         this.campaigns = data;
+        this.isCampaignsLoading = false;
       }, error => {
+        this.isCampaignsLoading = false;
         console.log(error);
       }
     );
@@ -27,4 +31,11 @@ export class TwitterCampaignsComponent implements OnInit {
     this.router.navigate(['/campaigns', campaign.name]);
   }
 
+  isCampaignEmpty() {
+    if (this.campaigns && this.campaigns.length === 0 && !this.isCampaignsLoading) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

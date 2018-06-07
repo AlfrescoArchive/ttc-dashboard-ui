@@ -16,7 +16,8 @@ import {
   MatToolbarModule,
   MatCardModule,
   MatIconModule,
-  MatGridListModule
+  MatGridListModule,
+  MatSlideToggleModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -40,7 +41,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatTableModule,
     MatSortModule,
     MatGridListModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSlideToggleModule
   ],
   providers: [
     TwitterClientService

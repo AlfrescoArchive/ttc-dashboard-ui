@@ -6,3 +6,26 @@
   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   background-size: cover;
 }
+
+.status-icon mat-icon {
+  height: 150px !important;
+  width: 150px !important;
+  font-size: 106px !important;
+}
+
+.status-icon fa {
+  height: 150px !important;
+  width: 150px !important;
+  font-size: 106px !important;
+}
+
+.status {
+  text-align: center;
+  font-size: 27px;
+  font-family: sans-serif;
+  padding: 50px 50px 50px 50px;
+}
+
+.status-message {
+
+}
