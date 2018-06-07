@@ -30,4 +30,8 @@ export class TwitterClientService {
   getProcessedTweets(id: String): Observable<any> {
     return this.http.get(this.BASE_URL + '/ttc-query-campaign/processed/' + id + '?sort=lastModified,desc');
   }
+
+  getRewardsTweets(id: String): Observable<any> {
+    return this.http.get(this.BASE_URL + '/ttc-connectors-reward/rewards/' + id);
+  }
 }

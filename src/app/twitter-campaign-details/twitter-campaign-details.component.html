@@ -25,7 +25,34 @@
 <mat-grid-list cols="3" rowHeight="1:1">
   <mat-grid-tile class="list">
 
-    <table mat-table [dataSource]="positiveFeeds" matSort class="mat-elevation-z8">
+    <div *ngIf="!isPositiveFeedsLoading && !positiveFeeds" class="status">
+      <div class="status-icon">
+        <mat-icon>error_outline</mat-icon>
+      </div>
+      <div class="status-message">
+        Service Unavailable
+      </div>
+    </div>
+
+    <div *ngIf="isPositiveFeedsEmpty()" class="status">
+      <div class="status-icon">
+        <mat-icon>format_align_justify</mat-icon>
+      </div>
+      <div class="status-message">
+        Empty Feed
+      </div>
+    </div>
+
+    <div *ngIf="isPositiveFeedsLoading" class="status">
+      <div class="status-icon">
+        <fa name="spinner" animation="spin"></fa>
+      </div>
+      <div class="status-message">
+        Loading
+      </div>
+    </div>
+
+    <table mat-table *ngIf="positiveFeeds && !isPositiveFeedsEmpty()" [dataSource]="positiveFeeds" matSort class="mat-elevation-z8">
 
       <ng-container matColumnDef="nroOfTweets">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> No.</th>
@@ -45,7 +72,35 @@
   </mat-grid-tile>
   <mat-grid-tile class="list">
 
-    <table mat-table [dataSource]="neutralFeeds" matSort class="mat-elevation-z8">
+    <div *ngIf="!isNeutralFeedsLoading && !neutralFeeds" class="status">
+      <div class="status-icon">
+        <mat-icon>error_outline</mat-icon>
+      </div>
+      <div class="status-message">
+        Service Unavailable
+      </div>
+    </div>
+
+    <div *ngIf="isNeutralFeedsEmpty()" class="status">
+      <div class="status-icon">
+        <mat-icon>format_align_justify</mat-icon>
+      </div>
+      <div class="status-message">
+        Empty Feed
+      </div>
+    </div>
+
+    <div *ngIf="isNeutralFeedsLoading" class="status">
+      <div class="status-icon">
+        <fa name="spinner" animation="spin"></fa>
+      </div>
+      <div class="status-message">
+        Loading
+      </div>
+    </div>
+
+
+    <table mat-table *ngIf="neutralFeeds && !isNeutralFeedsEmpty()" [dataSource]="neutralFeeds" matSort class="mat-elevation-z8">
 
       <ng-container matColumnDef="nroOfTweets">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> No.</th>
@@ -65,7 +120,35 @@
   </mat-grid-tile>
   <mat-grid-tile class="list">
 
-    <table mat-table [dataSource]="negativeFeeds" matSort class="mat-elevation-z8">
+    <div *ngIf="!isNegativeFeedsLoading && !negativeFeeds" class="status">
+      <div class="status-icon">
+        <mat-icon>error_outline</mat-icon>
+      </div>
+      <div class="status-message">
+        Service Unavailable
+      </div>
+    </div>
+
+    <div *ngIf="isNegativeFeedsEmpty()" class="status">
+      <div class="status-icon">
+        <mat-icon>format_align_justify</mat-icon>
+      </div>
+      <div class="status-message">
+        Empty Feed
+      </div>
+    </div>
+
+    <div *ngIf="isNegativeFeedsLoading" class="status">
+      <div class="status-icon">
+        <fa name="spinner" animation="spin"></fa>
+      </div>
+      <div class="status-message">
+        Loading
+      </div>
+    </div>
+
+
+    <table mat-table *ngIf="negativeFeeds && !isNegativeFeedsEmpty()" [dataSource]="negativeFeeds" matSort class="mat-elevation-z8">
 
       <ng-container matColumnDef="nroOfTweets">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> No.</th>
@@ -83,29 +166,156 @@
     </table>
 
   </mat-grid-tile>
+</mat-grid-list>
+
+<br><br>
+
+<mat-grid-list cols="1" rowHeight="60">
+  <mat-grid-tile>
+
+    <mat-card class="processed">Processed Feeds
+      <mat-icon class="align-right">repeat</mat-icon>
+    </mat-card>
+
+  </mat-grid-tile>
+</mat-grid-list>
+
+<mat-grid-list cols="1">
   <mat-grid-tile class="list">
 
-    <table mat-table [dataSource]="processedFeeds" matSort class="mat-elevation-z8">
+    <div *ngIf="!isProcessedFeedsLoading && !processedFeeds" class="status">
+      <div class="status-icon">
+        <mat-icon>error_outline</mat-icon>
+      </div>
+      <div class="status-message">
+        Service Unavailable
+      </div>
+    </div>
 
-      <ng-container matColumnDef="nroOfTweets">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> No.</th>
-        <td mat-cell *matCellDef="let element"> {{element.nroOfTweets}}</td>
+    <div *ngIf="isProcessedFeedsEmpty()" class="status">
+      <div class="status-icon">
+        <mat-icon>format_align_justify</mat-icon>
+      </div>
+      <div class="status-message">
+        Empty Feed
+      </div>
+    </div>
+
+    <div *ngIf="isProcessedFeedsLoading" class="status">
+      <div class="status-icon">
+        <fa name="spinner" animation="spin"></fa>
+      </div>
+      <div class="status-message">
+        Loading
+      </div>
+    </div>
+
+
+    <table mat-table *ngIf="processedFeeds && !isProcessedFeedsEmpty()" [dataSource]="processedFeeds" matSort class="mat-elevation-z8">
+
+      <ng-container matColumnDef="text">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Text</th>
+        <td mat-cell *matCellDef="let element"> {{element.entry.text}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="userName">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name</th>
-        <td mat-cell *matCellDef="let element"> {{element.userName}}</td>
+      <ng-container matColumnDef="author">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Author</th>
+        <td mat-cell *matCellDef="let element"> {{element.entry.author}}</td>
       </ng-container>
 
+      <ng-container matColumnDef="lang">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Lang</th>
+        <td mat-cell *matCellDef="let element"> {{element.entry.lang}}</td>
+      </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <ng-container matColumnDef="attitude">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Attitude</th>
+        <td mat-cell *matCellDef="let element"> {{element.entry.attitude}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="timestamp">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Timestamp</th>
+        <td mat-cell *matCellDef="let element"> {{element.entry.timestamp}}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsProcessed"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsProcessed;"></tr>
     </table>
 
   </mat-grid-tile>
-  <mat-grid-tile>5</mat-grid-tile>
-  <mat-grid-tile>6</mat-grid-tile>
-
 </mat-grid-list>
 
 
+<mat-grid-list cols="1" rowHeight="60">
+  <mat-grid-tile>
+
+    <mat-card class="processed">Reward Feeds
+      <mat-icon class="align-right">repeat</mat-icon>
+    </mat-card>
+
+  </mat-grid-tile>
+</mat-grid-list>
+
+<mat-grid-list cols="1">
+  <mat-grid-tile class="list">
+
+    <div *ngIf="!isRewardFeedsLoading && !rewardFeeds" class="status">
+      <div class="status-icon">
+        <mat-icon>error_outline</mat-icon>
+      </div>
+      <div class="status-message">
+        Service Unavailable
+      </div>
+    </div>
+
+    <div *ngIf="isRewardFeedsEmpty()" class="status">
+      <div class="status-icon">
+        <mat-icon>format_align_justify</mat-icon>
+      </div>
+      <div class="status-message">
+        Empty Feed
+      </div>
+    </div>
+
+    <div *ngIf="isRewardFeedsLoading" class="status">
+      <div class="status-icon">
+        <fa name="spinner" animation="spin"></fa>
+      </div>
+      <div class="status-message">
+        Loading
+      </div>
+    </div>
+
+
+    <table mat-table *ngIf="rewardFeeds && !isRewardFeedsEmpty()" [dataSource]="rewardFeeds" matSort class="mat-elevation-z8">
+
+      <ng-container matColumnDef="campaignName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Campaign Name</th>
+        <td mat-cell *matCellDef="let element"> {{element.campaignName}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="nroOfTweets">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nr Of Tweets</th>
+        <td mat-cell *matCellDef="let element"> {{element.rankedAuthor.nroOfTweets}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="userName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> username</th>
+        <td mat-cell *matCellDef="let element"> {{element.rankedAuthor.userName}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="rewardsText">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Rewards Text</th>
+        <td mat-cell *matCellDef="let element"> {{element.rewardsText}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="rewardDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Reward Date</th>
+        <td mat-cell *matCellDef="let element"> {{element.rewardDate}}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsReward"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsReward;"></tr>
+    </table>
+
+  </mat-grid-tile>
