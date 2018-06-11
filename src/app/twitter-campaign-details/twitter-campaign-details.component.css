@@ -32,6 +32,10 @@ mat-grid-tile ::ng-deep .mat-figure {
   background-color: #fdf3dd;
 }
 
+.winners {
+  background-color: #27b131;
+}
+
 .processed {
   background-color: coral;
 }
@@ -77,14 +81,14 @@ mat-tab-group ::ng-deep mat-tab-body ::ng-deep .button-refresh {
 .button-delete-tab {
   position: absolute;
   right: 10px;
-  top: 3px;
+  top: 8px;
   z-index: 2;
 }
 
 .button-refresh-tab {
   position: absolute;
   right: 60px;
-  top: 3px;
+  top: 8px;
   z-index: 2;
 }
 
@@ -93,5 +97,10 @@ mat-tab-group ::ng-deep mat-tab-body ::ng-deep .button-refresh {
 }
 
 mat-tab-group ::ng-deep mat-tab-header {
-  background-color: #a0949466;
+  background-color: #f3da2ddb;
+  height: 60px;
+}
+
+mat-tab-group ::ng-deep mat-tab-header .mat-tab-label {
+  height: 60px;
 }
