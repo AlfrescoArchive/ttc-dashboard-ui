@@ -94,6 +94,26 @@ export class TwitterCampaignsComponent implements OnInit {
     );
   }
 
+  private deleteRankinge() {
+    this.twitterClientService.deleteRankinge(this.campaign).subscribe((data: any) => {
+        this.getPositiveTweets();
+        this.getNegativeTweets();
+        this.getNeutralTweets();
+      }, error => {
+        console.log(error);
+      }
+    );
+  }
+
+  private deleteReward() {
+    this.twitterClientService.deleteReward(this.campaign).subscribe((data: any) => {
+        this.getRewardsTweets();
+      }, error => {
+        console.log(error);
+      }
+    );
+  }
+
   openCampaign(campaign) {
     this.router.navigate(['/campaigns', campaign.name]);
   }

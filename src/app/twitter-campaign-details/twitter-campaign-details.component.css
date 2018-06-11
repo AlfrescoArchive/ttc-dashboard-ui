@@ -7,7 +7,6 @@ table {
 }
 
 .list {
-  background: lightblue;
   overflow-y: auto;
   padding-left: 2px;
   padding-right: 2px;
@@ -38,15 +37,15 @@ mat-grid-tile ::ng-deep .mat-figure {
 }
 
 .status-icon mat-icon {
-  height: 150px !important;
-  width: 150px !important;
-  font-size: 106px !important;
+  height: 60px !important;
+  width: 60px !important;
+  font-size: 60px !important;
 }
 
 .status-icon fa {
-  height: 150px !important;
-  width: 150px !important;
-  font-size: 106px !important;
+  height: 60px !important;
+  width: 60px !important;
+  font-size: 60px !important;
 }
 
 .status {
@@ -60,7 +59,39 @@ mat-grid-tile ::ng-deep .mat-figure {
 
 }
 
-.button-refresh{
-  margin-top: -10px;
-  margin-right: 5px;
+.button-refresh {
+  margin-top: -15px;
+  margin-right: 10px;
+}
+
+mat-tab-group ::ng-deep mat-tab-body ::ng-deep .button-refresh {
+  margin-top: -15px;
+  margin-right: 10px;
+}
+
+.button-delete {
+  margin-top: -15px;
+  margin-right: 10px;
+}
+
+.button-delete-tab {
+  position: absolute;
+  right: 10px;
+  top: 3px;
+  z-index: 2;
+}
+
+.button-refresh-tab {
+  position: absolute;
+  right: 60px;
+  top: 3px;
+  z-index: 2;
+}
+
+.demo-tab-content {
+  overflow-x: hidden;
+}
+
+mat-tab-group ::ng-deep mat-tab-header {
+  background-color: #a0949466;
 }

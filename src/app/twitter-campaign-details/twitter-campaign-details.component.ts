@@ -112,6 +112,32 @@ export class TwitterCampaignDetailsComponent implements OnInit {
     );
   }
 
+  private refreshRanking() {
+    this.getPositiveTweets();
+    this.getNegativeTweets();
+    this.getNeutralTweets();
+  }
+
+  private deleteRanking() {
+    this.twitterClientService.deleteRankinge(this.campaign).subscribe((data: any) => {
+        this.getPositiveTweets();
+        this.getNegativeTweets();
+        this.getNeutralTweets();
+      }, error => {
+        console.log(error);
+      }
+    );
+  }
+
+  private deleteReward() {
+    this.twitterClientService.deleteReward(this.campaign).subscribe((data: any) => {
+        this.getRewardsTweets();
+      }, error => {
+        console.log(error);
+      }
+    );
+  }
+
   private getRewardsTweets() {
     this.isRewardFeedsLoading = true;
     this.rewardFeeds = null;

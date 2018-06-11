@@ -62,4 +62,12 @@ export class TwitterClientService {
   isQueryServiceAvailable(): Observable<any> {
     return this.http.get(this.BASE_URL + '/ttc-query-campaign/');
   }
+
+  deleteRankinge(id: String): Observable<any> {
+    return this.http.delete(this.BASE_URL + '/ttc-connectors-ranking/rank/' + id);
+  }
+
+  deleteReward(id: String): Observable<any> {
+    return this.http.delete(this.BASE_URL + '/ttc-connectors-reward/rewards/' + id);
+  }
 }

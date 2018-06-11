@@ -48,18 +48,21 @@
   <mat-divider></mat-divider>
   <h3 mat-subheader>Services</h3>
 
-  <mat-grid-list cols="3" rowHeight="40">
+  <mat-grid-list cols="4" rowHeight="40">
     <mat-grid-tile>
       <fa name="twitter"></fa>
     </mat-grid-tile>
 
     <mat-grid-tile>
+      twitter-feed
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <fa name="spinner" animation="spin" *ngIf="isstatusCampaignLoading"></fa>
       <mat-slide-toggle *ngIf="!isstatusCampaignLoading"
                         [(ngModel)]="statusCampaign"
                         (change)="switchCampaign($event)">
       </mat-slide-toggle>
-        <fa name="spinner" animation="spin" *ngIf="isstatusCampaignLoading"></fa>
-        twitter-feed
     </mat-grid-tile>
 
     <mat-grid-tile>
@@ -78,13 +81,16 @@
   </mat-grid-list>
 
 
-  <mat-grid-list cols="3" rowHeight="40">
+  <mat-grid-list cols="4" rowHeight="40">
     <mat-grid-tile>
       <mat-icon>search</mat-icon>
     </mat-grid-tile>
 
     <mat-grid-tile>
       query
+    </mat-grid-tile>
+
+    <mat-grid-tile>
     </mat-grid-tile>
 
     <mat-grid-tile>
@@ -98,13 +104,17 @@
     </mat-grid-tile>
   </mat-grid-list>
 
-  <mat-grid-list cols="3" rowHeight="40">
+  <mat-grid-list cols="4" rowHeight="40">
     <mat-grid-tile>
       <mat-icon>sort</mat-icon>
     </mat-grid-tile>
 
     <mat-grid-tile>
       ranking
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+
     </mat-grid-tile>
 
     <mat-grid-tile>
@@ -119,13 +129,17 @@
   </mat-grid-list>
 
 
-  <mat-grid-list cols="3" rowHeight="40">
+  <mat-grid-list cols="4" rowHeight="40">
     <mat-grid-tile>
       <fa name="trophy"></fa>
     </mat-grid-tile>
 
     <mat-grid-tile>
       reward
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+
     </mat-grid-tile>
 
     <mat-grid-tile>

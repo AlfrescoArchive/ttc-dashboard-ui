@@ -45,3 +45,8 @@
 mat-chip-list {
   display: inline-block;
 }
+
+.button-delete {
+  margin-top: -15px;
+  margin-right: 10px;
+}
