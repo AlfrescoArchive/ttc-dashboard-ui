@@ -1,9 +1,12 @@
-
 <mat-grid-list cols="1" rowHeight="60">
   <mat-grid-tile>
 
     <mat-card class="processed">Campaign Feed
       <mat-icon class="align-right">repeat</mat-icon>
+
+      <button mat-mini-fab class="button-refresh align-right" color="primary" (click)="getProcessedTweets()">
+        <mat-icon>refresh</mat-icon>
+      </button>
     </mat-card>
 
   </mat-grid-tile>
@@ -69,7 +72,13 @@
   <mat-grid-tile>
 
     <mat-card class="positive">Positives
+
       <mat-icon class="align-right">mood</mat-icon>
+
+      <button mat-mini-fab class="button-refresh align-right" color="primary" (click)="getPositiveTweets()">
+        <mat-icon>refresh</mat-icon>
+      </button>
+
     </mat-card>
 
   </mat-grid-tile>
@@ -77,6 +86,10 @@
 
     <mat-card class="neutral">Neutral
       <mat-icon class="align-right">sentiment_satisfied</mat-icon>
+
+      <button mat-mini-fab class="button-refresh align-right" color="primary" (click)="getNeutralTweets()">
+        <mat-icon>refresh</mat-icon>
+      </button>
     </mat-card>
 
   </mat-grid-tile>
@@ -84,6 +97,10 @@
 
     <mat-card class="negative">Negatives
       <mat-icon class="align-right">mood_bad</mat-icon>
+
+      <button mat-mini-fab class="button-refresh align-right" color="primary" (click)="getNegativeTweets()">
+        <mat-icon>refresh</mat-icon>
+      </button>
     </mat-card>
 
   </mat-grid-tile>
@@ -238,12 +255,16 @@
 <br><br>
 
 
-
 <mat-grid-list cols="1" rowHeight="60">
   <mat-grid-tile>
 
     <mat-card class="processed">Winners
       <mat-icon class="align-right">repeat</mat-icon>
+
+      <button mat-mini-fab class="button-refresh align-right" color="primary" (click)="getRewardsTweets()">
+        <mat-icon>refresh</mat-icon>
+      </button>
+
     </mat-card>
 
   </mat-grid-tile>

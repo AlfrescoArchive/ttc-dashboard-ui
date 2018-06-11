@@ -28,6 +28,8 @@ export class TwitterCampaignDetailsComponent implements OnInit {
   isProcessedFeedsLoading = true;
   isRewardFeedsLoading = true;
 
+  campaign;
+
   constructor(private router: Router,
               private route: ActivatedRoute,
               private twitterClientService: TwitterClientService) {
@@ -35,16 +37,20 @@ export class TwitterCampaignDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.getPositiveTweets(params.id);
-      this.getNegativeTweets(params.id);
-      this.getNeutralTweets(params.id);
-      this.getProcessedTweets(params.id);
-      this.getRewardsTweets(params.id);
+      this.campaign = params.id;
+      this.getPositiveTweets();
+      this.getNegativeTweets();
+      this.getNeutralTweets();
+      this.getProcessedTweets();
+      this.getRewardsTweets();
     });
   }
 
-  private getNegativeTweets(id: any) {
-    this.twitterClientService.getNegativeTweets(id).subscribe((data: any) => {
+  private getNegativeTweets() {
+    this.isNegativeFeedsLoading = true;
+    this.negativeFeeds = null;
+
+    this.twitterClientService.getNegativeTweets(this.campaign).subscribe((data: any) => {
         this.negativeFeeds = new MatTableDataSource(data);
         this.negativeFeeds.sort = this.sort;
         this.isNegativeFeedsLoading = false;
@@ -57,8 +63,11 @@ export class TwitterCampaignDetailsComponent implements OnInit {
 
   }
 
-  private getPositiveTweets(id: any) {
-    this.twitterClientService.getPositiveTweets(id).subscribe((data: any) => {
+  private getPositiveTweets() {
+    this.isPositiveFeedsLoading = true;
+    this.positiveFeeds = null;
+
+    this.twitterClientService.getPositiveTweets(this.campaign).subscribe((data: any) => {
         this.positiveFeeds = new MatTableDataSource(data);
         this.positiveFeeds.sort = this.sort;
         this.isPositiveFeedsLoading = false;
@@ -70,8 +79,11 @@ export class TwitterCampaignDetailsComponent implements OnInit {
     );
   }
 
-  private getNeutralTweets(id: any) {
-    this.twitterClientService.getNeutralTweets(id).subscribe((data: any) => {
+  private getNeutralTweets() {
+    this.isNeutralFeedsLoading = true;
+    this.neutralFeeds = null;
+
+    this.twitterClientService.getNeutralTweets(this.campaign).subscribe((data: any) => {
         this.neutralFeeds = new MatTableDataSource(data);
         this.neutralFeeds.sort = this.sort;
         this.isNeutralFeedsLoading = false;
@@ -84,8 +96,11 @@ export class TwitterCampaignDetailsComponent implements OnInit {
     );
   }
 
-  private getProcessedTweets(id: any) {
-    this.twitterClientService.getProcessedTweets(id).subscribe((data: any) => {
+  private getProcessedTweets() {
+    this.isProcessedFeedsLoading = true;
+    this.processedFeeds = null;
+
+    this.twitterClientService.getProcessedTweets(this.campaign).subscribe((data: any) => {
         this.processedFeeds = new MatTableDataSource(data.list.entries);
         this.processedFeeds.sort = this.sort;
         this.isProcessedFeedsLoading = false;
@@ -97,8 +112,11 @@ export class TwitterCampaignDetailsComponent implements OnInit {
     );
   }
 
-  private getRewardsTweets(id: any) {
-    this.twitterClientService.getRewardsTweets(id).subscribe((data: any) => {
+  private getRewardsTweets() {
+    this.isRewardFeedsLoading = true;
+    this.rewardFeeds = null;
+
+    this.twitterClientService.getRewardsTweets(this.campaign).subscribe((data: any) => {
         data = (data === null) ? [] : data;
         this.rewardFeeds = new MatTableDataSource(data);
         this.rewardFeeds.sort = this.sort;

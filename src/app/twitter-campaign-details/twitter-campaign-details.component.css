@@ -59,3 +59,8 @@ mat-grid-tile ::ng-deep .mat-figure {
 .status-message {
 
 }
+
+.button-refresh{
+  margin-top: -10px;
+  margin-right: 5px;
+}
