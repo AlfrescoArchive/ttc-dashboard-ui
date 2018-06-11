@@ -46,4 +46,20 @@ export class TwitterClientService {
   statusCampaign(): Observable<any> {
     return this.http.get(this.BASE_URL + '/ttc-connectors-dummytwitter/feed');
   }
+
+  isRewardServiceAvailable(): Observable<any> {
+    return this.http.get(this.BASE_URL + '/ttc-connectors-dummytwitter/feed');
+  }
+
+  isTwitterCampaignServiceAvailable(): Observable<any> {
+    return this.http.get(this.BASE_URL + '/ttc-connectors-dummytwitter/feed');
+  }
+
+  isRankingServiceAvailable(): Observable<any> {
+    return this.http.get(this.BASE_URL + '/ttc-connectors-ranking/rank/');
+  }
+
+  isQueryServiceAvailable(): Observable<any> {
+    return this.http.get(this.BASE_URL + '/ttc-query-campaign/');
+  }
 }

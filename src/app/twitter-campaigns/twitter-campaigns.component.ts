@@ -12,6 +12,18 @@ export class TwitterCampaignsComponent implements OnInit {
   campaigns: any[];
 
   isCampaignsLoading = true;
+  statusCampaign = false;
+  isstatusCampaignLoading = true;
+
+  isRankingServiceAvailableLoading = true;
+  isTwitterCampaignServiceAvailableLoading = true;
+  isRewardServiceAvailableLoading = true;
+  isQueryServiceAvailableLoading = true;
+
+  isRankingServiceAvailableFlag;
+  isTwitterCampaignServiceAvailableFlag;
+  isRewardServiceAvailableFlag;
+  isQueryServiceAvailableFlag;
 
   constructor(private twitterClientService: TwitterClientService, private router: Router) {
     twitterClientService.getCampaigns().subscribe((data: any[]) => {
@@ -25,6 +37,61 @@ export class TwitterCampaignsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.twitterClientService.statusCampaign().subscribe((data: any) => {
+      this.statusCampaign = !data;
+      this.isstatusCampaignLoading = false;
+    }, error => {
+      this.isstatusCampaignLoading = false;
+    });
+
+    this.isRankingServiceAvailable();
+    this.isTwitterCampaignServiceAvailable();
+    this.isRewardServiceAvailable();
+    this.isQueryServiceAvailable();
+  }
+
+  private isRankingServiceAvailable() {
+    this.twitterClientService.isRankingServiceAvailable().subscribe((data: any) => {
+        this.isRankingServiceAvailableFlag = true;
+        this.isRankingServiceAvailableLoading = false;
+      }, error => {
+        this.isRankingServiceAvailableFlag = false;
+        this.isRankingServiceAvailableLoading = false;
+      }
+    );
+  }
+
+  private isTwitterCampaignServiceAvailable() {
+    this.twitterClientService.isTwitterCampaignServiceAvailable().subscribe((data: any) => {
+        this.isTwitterCampaignServiceAvailableFlag = true;
+        this.isTwitterCampaignServiceAvailableLoading = false;
+      }, error => {
+        this.isTwitterCampaignServiceAvailableFlag = false;
+        this.isTwitterCampaignServiceAvailableLoading = false;
+      }
+    );
+  }
+
+  private isRewardServiceAvailable() {
+    this.twitterClientService.isRewardServiceAvailable().subscribe((data: any) => {
+        this.isRewardServiceAvailableFlag = true;
+        this.isRewardServiceAvailableLoading = false;
+      }, error => {
+        this.isRewardServiceAvailableFlag = false;
+        this.isRewardServiceAvailableLoading = false;
+      }
+    );
+  }
+
+  private isQueryServiceAvailable() {
+    this.twitterClientService.isQueryServiceAvailable().subscribe((data: any) => {
+        this.isQueryServiceAvailableFlag = true;
+        this.isQueryServiceAvailableLoading = false;
+      }, error => {
+        this.isQueryServiceAvailableFlag = false;
+        this.isQueryServiceAvailableLoading = false;
+      }
+    );
   }
 
   openCampaign(campaign) {
@@ -37,5 +104,25 @@ export class TwitterCampaignsComponent implements OnInit {
     } else {
       return false;
     }
+  }
+
+  switchCampaign(event) {
+    if (event.checked) {
+      this.startCampaign();
+    } else {
+      this.stopCampaign();
+    }
+  }
+
+  startCampaign() {
+    this.twitterClientService.startCampaign().subscribe((data: any) => {
+      console.log(data);
+    });
+  }
+
+  stopCampaign() {
+    this.twitterClientService.stopCampaign().subscribe((data: any) => {
+      console.log(data);
+    });
   }
 }

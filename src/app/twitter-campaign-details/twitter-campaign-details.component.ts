@@ -13,7 +13,7 @@ export class TwitterCampaignDetailsComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   displayedColumns = ['nroOfTweets', 'userName'];
-  displayedColumnsProcessed = ['text', 'author', 'lang', 'attitude', 'timestamp'];
+  displayedColumnsProcessed = ['timestamp', 'author', 'text', 'attitude'];
   displayedColumnsReward = ['campaignName', 'nroOfTweets', 'userName', 'rewardsText', 'rewardDate'];
 
   negativeFeeds: any;

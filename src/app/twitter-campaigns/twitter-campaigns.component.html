@@ -1,11 +1,13 @@
 <mat-card class="example-card" *ngFor="let campaign of campaigns">
   <mat-card-header>
-    <mat-card-title>{{campaign.name}}</mat-card-title>
+    <mat-card-title><b>Campaign {{campaign.name}}</b></mat-card-title>
   </mat-card-header>
-  <mat-card-content>
+  <mat-card-content class="content">
     <p>
-      {{campaign.serviceId}} - {{campaign.name}} - {{campaign.lang}}
-      Twitter Campaign
+      Name: {{campaign.name}}
+    </p>
+    <p>
+      Lang: {{campaign.lang}}
     </p>
   </mat-card-content>
   <mat-card-actions>
@@ -40,3 +42,117 @@
     No Campaign Available
   </div>
 </div>
+
+
+<mat-list>
+  <mat-divider></mat-divider>
+  <h3 mat-subheader>Services</h3>
+
+  <mat-grid-list cols="3" rowHeight="40">
+    <mat-grid-tile>
+      <fa name="twitter"></fa>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-slide-toggle *ngIf="!isstatusCampaignLoading"
+                        [(ngModel)]="statusCampaign"
+                        (change)="switchCampaign($event)">
+      </mat-slide-toggle>
+        <fa name="spinner" animation="spin" *ngIf="isstatusCampaignLoading"></fa>
+        twitter-feed
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-chip-list>
+        <mat-chip *ngIf="isTwitterCampaignServiceAvailableLoading" class="status-loading">
+          <fa name="spinner" animation="spin"></fa>
+        </mat-chip>
+        <mat-chip *ngIf="isTwitterCampaignServiceAvailableFlag && !isTwitterCampaignServiceAvailableLoading" class="status-active">
+          Available
+        </mat-chip>
+        <mat-chip *ngIf="!isTwitterCampaignServiceAvailableFlag && !isTwitterCampaignServiceAvailableLoading" class="status-error">Not
+          Available
+        </mat-chip>
+      </mat-chip-list>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+
+  <mat-grid-list cols="3" rowHeight="40">
+    <mat-grid-tile>
+      <mat-icon>search</mat-icon>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      query
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-chip-list>
+        <mat-chip *ngIf="isQueryServiceAvailableLoading" class="status-loading">
+          <fa name="spinner" animation="spin"></fa>
+        </mat-chip>
+        <mat-chip *ngIf="isQueryServiceAvailableFlag && !isQueryServiceAvailableLoading" class="status-active">Available</mat-chip>
+        <mat-chip *ngIf="!isQueryServiceAvailableFlag && !isQueryServiceAvailableLoading" class="status-error">Not Available</mat-chip>
+      </mat-chip-list>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <mat-grid-list cols="3" rowHeight="40">
+    <mat-grid-tile>
+      <mat-icon>sort</mat-icon>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      ranking
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-chip-list>
+        <mat-chip *ngIf="isRankingServiceAvailableLoading" class="status-loading">
+          <fa name="spinner" animation="spin"></fa>
+        </mat-chip>
+        <mat-chip *ngIf="isRankingServiceAvailableFlag && !isRankingServiceAvailableLoading" class="status-active">Available</mat-chip>
+        <mat-chip *ngIf="!isRankingServiceAvailableFlag && !isRankingServiceAvailableLoading" class="status-error">Not Available</mat-chip>
+      </mat-chip-list>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+
+  <mat-grid-list cols="3" rowHeight="40">
+    <mat-grid-tile>
+      <fa name="trophy"></fa>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      reward
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-chip-list>
+        <mat-chip *ngIf="isRewardServiceAvailableLoading" class="status-loading">
+          <fa name="spinner" animation="spin"></fa>
+        </mat-chip>
+        <mat-chip *ngIf="isRewardServiceAvailableFlag && !isRewardServiceAvailableLoading" class="status-active">Available</mat-chip>
+        <mat-chip *ngIf="!isRewardServiceAvailableFlag && !isRewardServiceAvailableLoading" class="status-error">Not Available</mat-chip>
+      </mat-chip-list>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <!--<mat-grid-list cols="3" rowHeight="40">-->
+  <!--<mat-grid-tile>-->
+  <!--<fa name="cogs"></fa>-->
+  <!--</mat-grid-tile>-->
+
+  <!--<mat-grid-tile>-->
+  <!--processing-->
+  <!--</mat-grid-tile>-->
+
+  <!--<mat-grid-tile>-->
+  <!--<mat-chip-list>-->
+  <!--<mat-chip class="status-active">Available</mat-chip>-->
+  <!--<mat-chip class="status-error">Not Available</mat-chip>-->
+  <!--</mat-chip-list>-->
+  <!--</mat-grid-tile>-->
+  <!--</mat-grid-list>-->
+</mat-list>

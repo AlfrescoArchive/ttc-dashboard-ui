@@ -29,3 +29,19 @@
 .status-message {
 
 }
+
+.content {
+  margin-left: 10px;
+}
+
+.status-active {
+  background-color: #28b346;
+}
+
+.status-error {
+  background-color: #ef2e2e;
+}
+
+mat-chip-list {
+  display: inline-block;
+}
