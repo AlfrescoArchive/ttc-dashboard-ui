@@ -1,6 +1,6 @@
 {
   "/activiti-api": {
-    "target": "PUT YOUR CLUSTER GATEWAY URL HERE",
+    "target": "http://ttc-infra-gateway/",
     "secure": false,
     "pathRewrite": {
       "^/activiti-api": ""
