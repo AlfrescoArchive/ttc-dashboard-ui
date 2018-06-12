@@ -121,7 +121,7 @@ export class TwitterCampaignsComponent implements OnInit {
   }
 
   switchCampaign(event) {
-    if (event.checked) {
+    if (!event.checked) {
       this.startCampaign();
     } else {
       this.stopCampaign();

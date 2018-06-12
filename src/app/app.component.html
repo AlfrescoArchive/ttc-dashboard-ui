@@ -1,7 +1,7 @@
 <mat-toolbar class="header">
   <mat-toolbar-row>
-    <img src="assets/logo.png" class="logo">
-    <span>{{title}}</span>
+    <img src="assets/logo.png" class="logo" (click)="navigateToRoute()">
+    <span>{{title}} {{campaign}}</span>
     <span class="header-spacer"></span>
     <fa name="twitter" animation="spin"></fa>
   </mat-toolbar-row>

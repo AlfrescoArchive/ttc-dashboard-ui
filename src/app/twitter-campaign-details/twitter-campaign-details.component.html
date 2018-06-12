@@ -327,11 +327,6 @@
 
         <table mat-table *ngIf="rewardFeeds && !isRewardFeedsEmpty()" [dataSource]="rewardFeeds" matSort class="mat-elevation-z8">
 
-          <ng-container matColumnDef="campaignName">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Campaign Name</th>
-            <td mat-cell *matCellDef="let element"> {{element.campaignName}}</td>
-          </ng-container>
-
           <ng-container matColumnDef="nroOfTweets">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Nr Of Tweets</th>
             <td mat-cell *matCellDef="let element"> {{element.rankedAuthor.nroOfTweets}}</td>

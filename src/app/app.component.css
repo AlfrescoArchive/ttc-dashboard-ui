@@ -17,6 +17,7 @@ mat-toolbar {
 
 .logo {
   width: 50px;
+  cursor: pointer;
 }
 
 .header {
