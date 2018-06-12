@@ -20,12 +20,14 @@ export class TwitterCampaignsComponent implements OnInit {
   isRewardServiceAvailableLoading = true;
   isProcessingServiceAvailableLoading = true;
   isQueryServiceAvailableLoading = true;
+  isGatewayerviceAvailableLoading = true;
 
   isRankingServiceAvailableFlag;
   isTwitterCampaignServiceAvailableFlag;
   isRewardServiceAvailableFlag;
   isProcessingServiceAvailableFlag;
   isQueryServiceAvailableFlag;
+  isGatewayServiceAvailableFlag;
 
   constructor(private twitterClientService: TwitterClientService, private router: Router) {
     twitterClientService.getCampaigns().subscribe((data: any[]) => {
@@ -51,6 +53,7 @@ export class TwitterCampaignsComponent implements OnInit {
     this.isRewardServiceAvailable();
     this.isQueryServiceAvailable();
     this.isProcessingServiceAvailable();
+    this.isGatewayAvailable();
   }
 
   private isRankingServiceAvailable() {
@@ -104,6 +107,26 @@ export class TwitterCampaignsComponent implements OnInit {
       }, error => {
         this.isQueryServiceAvailableFlag = false;
         this.isQueryServiceAvailableLoading = false;
+      }
+    );
+  }
+
+  private isGatewayAvailable() {
+    this.twitterClientService.isGatewayAvailable().subscribe((data: any) => {
+        this.isGatewayServiceAvailableFlag = true;
+        this.isGatewayerviceAvailableLoading = false;
+      }, error => {
+        this.isGatewayServiceAvailableFlag = false;
+        this.isGatewayerviceAvailableLoading = false;
+      }
+    );
+  }
+
+  private refreshGateway() {
+    this.twitterClientService.refreshGateway().subscribe((data: any) => {
+        console.log(data);
+      }, error => {
+        console.log(data);
       }
     );
   }

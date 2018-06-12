@@ -74,4 +74,12 @@ export class TwitterClientService {
   deleteReward(id: String): Observable<any> {
     return this.http.delete(this.BASE_URL + '/ttc-connectors-reward/rewards/' + id);
   }
+
+  isGatewayAvailable(): Observable<any> {
+    return this.http.get(this.BASE_URL);
+  }
+
+  refreshGateway(): Observable<any> {
+    return this.http.post(this.BASE_URL + '/actuator/refresh');
+  }
 }

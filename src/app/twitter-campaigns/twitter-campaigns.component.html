@@ -50,6 +50,38 @@
 
   <mat-grid-list cols="4" rowHeight="40">
     <mat-grid-tile>
+      <mat-icon>router</mat-icon>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      Gateway
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <button [disabled]="!isGatewayServiceAvailableFlag && isGatewayerviceAvailableLoading" mat-raised-button
+              class="button-delete align-right"
+              color="primary" (click)="refreshGateway()">
+        <mat-icon>refresh</mat-icon>
+      </button>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-chip-list>
+        <mat-chip *ngIf="isGatewayerviceAvailableLoading" class="status-loading">
+          <fa name="spinner" animation="spin"></fa>
+        </mat-chip>
+        <mat-chip *ngIf="isGatewayServiceAvailableFlag && !isGatewayerviceAvailableLoading" class="status-active">
+          Available
+        </mat-chip>
+        <mat-chip *ngIf="!isGatewayServiceAvailableFlag && !isGatewayerviceAvailableLoading" class="status-error">Not
+          Available
+        </mat-chip>
+      </mat-chip-list>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <mat-grid-list cols="4" rowHeight="40">
+    <mat-grid-tile>
       <fa name="twitter"></fa>
     </mat-grid-tile>
 
