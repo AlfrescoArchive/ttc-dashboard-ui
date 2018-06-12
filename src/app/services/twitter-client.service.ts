@@ -48,7 +48,7 @@ export class TwitterClientService {
   }
 
   isRewardServiceAvailable(): Observable<any> {
-    return this.http.get(this.BASE_URL + '/ttc-connectors-dummytwitter/feed');
+    return this.http.get(this.BASE_URL + '/ttc-connectors-reward/');
   }
 
   isTwitterCampaignServiceAvailable(): Observable<any> {
@@ -56,7 +56,11 @@ export class TwitterClientService {
   }
 
   isRankingServiceAvailable(): Observable<any> {
-    return this.http.get(this.BASE_URL + '/ttc-connectors-ranking/rank/');
+    return this.http.get(this.BASE_URL + '/ttc-connectors-ranking/');
+  }
+
+  isProcessingServiceAvailable(): Observable<any> {
+    return this.http.get(this.BASE_URL + '/ttc-connectors-processing/');
   }
 
   isQueryServiceAvailable(): Observable<any> {
