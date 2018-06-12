@@ -80,6 +80,6 @@ export class TwitterClientService {
   }
 
   refreshGateway(): Observable<any> {
-    return this.http.post(this.BASE_URL + '/actuator/refresh');
+    return this.http.post(this.BASE_URL + '/actuator/refresh', null);
   }
 }

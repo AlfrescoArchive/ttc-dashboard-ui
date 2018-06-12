@@ -126,7 +126,7 @@ export class TwitterCampaignsComponent implements OnInit {
     this.twitterClientService.refreshGateway().subscribe((data: any) => {
         console.log(data);
       }, error => {
-        console.log(data);
+        console.log(error);
       }
     );
   }
