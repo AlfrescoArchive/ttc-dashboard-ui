@@ -94,6 +94,7 @@
       <div *ngIf="!isstatusCampaignLoading">
         OFF
         <mat-slide-toggle
+          [disabled]="!isTwitterCampaignServiceAvailableFlag"
           [(ngModel)]="!statusCampaign"
           (change)="switchCampaign($event)">
         </mat-slide-toggle>
