@@ -1,6 +1,6 @@
 {
   "/activiti-api": {
-    "target": "YOUR CLUSTER URL GOES HERE",
+    "target": "PUT YOUR CLUSTER GATEWAY URL HERE",
     "secure": false,
     "pathRewrite": {
       "^/activiti-api": ""
