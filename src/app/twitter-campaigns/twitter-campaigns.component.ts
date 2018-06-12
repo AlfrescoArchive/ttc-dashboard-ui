@@ -18,11 +18,13 @@ export class TwitterCampaignsComponent implements OnInit {
   isRankingServiceAvailableLoading = true;
   isTwitterCampaignServiceAvailableLoading = true;
   isRewardServiceAvailableLoading = true;
+  isProcessingServiceAvailableLoading = true;
   isQueryServiceAvailableLoading = true;
 
   isRankingServiceAvailableFlag;
   isTwitterCampaignServiceAvailableFlag;
   isRewardServiceAvailableFlag;
+  isProcessingServiceAvailableFlag;
   isQueryServiceAvailableFlag;
 
   constructor(private twitterClientService: TwitterClientService, private router: Router) {
@@ -48,6 +50,7 @@ export class TwitterCampaignsComponent implements OnInit {
     this.isTwitterCampaignServiceAvailable();
     this.isRewardServiceAvailable();
     this.isQueryServiceAvailable();
+    this.isProcessingServiceAvailable();
   }
 
   private isRankingServiceAvailable() {
@@ -79,6 +82,17 @@ export class TwitterCampaignsComponent implements OnInit {
       }, error => {
         this.isRewardServiceAvailableFlag = false;
         this.isRewardServiceAvailableLoading = false;
+      }
+    );
+  }
+
+  private isProcessingServiceAvailable() {
+    this.twitterClientService.isProcessingServiceAvailable().subscribe((data: any) => {
+        this.isProcessingServiceAvailableFlag = true;
+        this.isProcessingServiceAvailableLoading = false;
+      }, error => {
+        this.isProcessingServiceAvailableFlag = false;
+        this.isProcessingServiceAvailableLoading = false;
       }
     );
   }

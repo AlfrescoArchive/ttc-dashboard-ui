@@ -54,7 +54,7 @@
     </mat-grid-tile>
 
     <mat-grid-tile>
-      twitter-feed
+      (Dummy) Twitter Connector Feed Service
     </mat-grid-tile>
 
     <mat-grid-tile>
@@ -87,7 +87,7 @@
     </mat-grid-tile>
 
     <mat-grid-tile>
-      query
+      Campaigns Query Service
     </mat-grid-tile>
 
     <mat-grid-tile>
@@ -110,7 +110,7 @@
     </mat-grid-tile>
 
     <mat-grid-tile>
-      ranking
+      Ranking Service
     </mat-grid-tile>
 
     <mat-grid-tile>
@@ -135,7 +135,7 @@
     </mat-grid-tile>
 
     <mat-grid-tile>
-      reward
+      Reward Service
     </mat-grid-tile>
 
     <mat-grid-tile>
@@ -149,6 +149,31 @@
         </mat-chip>
         <mat-chip *ngIf="isRewardServiceAvailableFlag && !isRewardServiceAvailableLoading" class="status-active">Available</mat-chip>
         <mat-chip *ngIf="!isRewardServiceAvailableFlag && !isRewardServiceAvailableLoading" class="status-error">Not Available</mat-chip>
+      </mat-chip-list>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+
+  <mat-grid-list cols="4" rowHeight="40">
+    <mat-grid-tile>
+      <fa name="gear"></fa>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      Processing Service
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-chip-list>
+        <mat-chip *ngIf="isProcessingServiceAvailableLoading" class="status-loading">
+          <fa name="spinner" animation="spin"></fa>
+        </mat-chip>
+        <mat-chip *ngIf="isProcessingServiceAvailableFlag && !isProcessingServiceAvailableLoading" class="status-active">Available</mat-chip>
+        <mat-chip *ngIf="!isProcessingServiceAvailableFlag && !isProcessingServiceAvailableLoading" class="status-error">Not Available</mat-chip>
       </mat-chip-list>
     </mat-grid-tile>
   </mat-grid-list>
