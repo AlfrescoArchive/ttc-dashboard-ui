@@ -14,3 +14,11 @@ mat-toolbar {
 .content {
   padding: 2px 2px 2px 2px;
 }
+
+.logo {
+  width: 50px;
+}
+
+.header {
+  background-color: #1f2b63;
+}
