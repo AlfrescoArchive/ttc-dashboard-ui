@@ -119,7 +119,7 @@ export class TwitterCampaignDetailsComponent implements OnInit {
   }
 
   private deleteRanking() {
-    this.twitterClientService.deleteRankinge(this.campaign).subscribe((data: any) => {
+    this.twitterClientService.deleteRanking(this.campaign).subscribe((data: any) => {
         this.getPositiveTweets();
         this.getNegativeTweets();
         this.getNeutralTweets();

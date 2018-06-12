@@ -59,10 +59,15 @@
 
     <mat-grid-tile>
       <fa name="spinner" animation="spin" *ngIf="isstatusCampaignLoading"></fa>
-      <mat-slide-toggle *ngIf="!isstatusCampaignLoading"
-                        [(ngModel)]="statusCampaign"
-                        (change)="switchCampaign($event)">
-      </mat-slide-toggle>
+      <div *ngIf="!isstatusCampaignLoading">
+        OFF
+        <mat-slide-toggle
+          [(ngModel)]="!statusCampaign"
+          (change)="switchCampaign($event)">
+        </mat-slide-toggle>
+        ON
+      </div>
+
     </mat-grid-tile>
 
     <mat-grid-tile>
@@ -172,8 +177,10 @@
         <mat-chip *ngIf="isProcessingServiceAvailableLoading" class="status-loading">
           <fa name="spinner" animation="spin"></fa>
         </mat-chip>
-        <mat-chip *ngIf="isProcessingServiceAvailableFlag && !isProcessingServiceAvailableLoading" class="status-active">Available</mat-chip>
-        <mat-chip *ngIf="!isProcessingServiceAvailableFlag && !isProcessingServiceAvailableLoading" class="status-error">Not Available</mat-chip>
+        <mat-chip *ngIf="isProcessingServiceAvailableFlag && !isProcessingServiceAvailableLoading" class="status-active">Available
+        </mat-chip>
+        <mat-chip *ngIf="!isProcessingServiceAvailableFlag && !isProcessingServiceAvailableLoading" class="status-error">Not Available
+        </mat-chip>
       </mat-chip-list>
     </mat-grid-tile>
   </mat-grid-list>

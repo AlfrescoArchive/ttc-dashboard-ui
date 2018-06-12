@@ -67,7 +67,7 @@ export class TwitterClientService {
     return this.http.get(this.BASE_URL + '/ttc-query-campaign/');
   }
 
-  deleteRankinge(id: String): Observable<any> {
+  deleteRanking(id: String): Observable<any> {
     return this.http.delete(this.BASE_URL + '/ttc-connectors-ranking/rank/' + id);
   }
 
