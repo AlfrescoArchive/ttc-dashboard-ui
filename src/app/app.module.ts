@@ -23,12 +23,21 @@ import {
   MatTabsModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { APP_INITIALIZER } from '@angular/core';
+import { KeycloakService } from './keycloak.service';
+import { TokenInterceptorComponent } from './token-interceptor/token-interceptor.component';
+
+export function kcFactory(keycloakService: KeycloakService) {
+  return () => keycloakService.init();
+}
+
 
 @NgModule({
   declarations: [
     AppComponent,
     TwitterCampaignsComponent,
-    TwitterCampaignDetailsComponent
+    TwitterCampaignDetailsComponent,
+    TokenInterceptorComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +60,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatTabsModule
   ],
   providers: [
-    TwitterClientService
+    TwitterClientService,
+    KeycloakService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: kcFactory,
+      deps: [KeycloakService],
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

@@ -1,6 +1,6 @@
 {
   "/activiti-api": {
-    "target": "http://ttc-infra-gateway/",
+    "target": "localhost:8180",
     "secure": false,
     "pathRewrite": {
       "^/activiti-api": ""
