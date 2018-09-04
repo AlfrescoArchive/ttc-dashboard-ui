@@ -1,6 +1,6 @@
 {
   "/activiti-api": {
-    "target": "http://activiti-keycloak.jx-staging.35.189.236.129.nip.io/auth/",
+    "target": "http://activiti-cloud-gateway.jx-staging.35.189.236.129.nip.io",
     "secure": false,
     "pathRewrite": {
       "^/activiti-api": ""
