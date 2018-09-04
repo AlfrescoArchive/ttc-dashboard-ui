@@ -1,6 +1,6 @@
 {
   "/activiti-api": {
-    "target": "http://ttc-infra-gateway/",
+    "target": "http://activiti-keycloak.jx-staging.35.189.236.129.nip.io/auth/",
     "secure": false,
     "pathRewrite": {
       "^/activiti-api": ""
