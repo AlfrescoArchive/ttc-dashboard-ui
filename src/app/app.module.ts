@@ -25,6 +25,7 @@ import {
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { KeycloakService, KeycloakAngularModule } from 'keycloak-angular';
 import { initializer } from './utils/app-init';
+import { AppAuthGuard } from './app.authguard';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { initializer } from './utils/app-init';
       useFactory: initializer,
       multi: true,
       deps: [KeycloakService]
-    }
+    },
+    AppAuthGuard
   ],
   bootstrap: [AppComponent]
 })
