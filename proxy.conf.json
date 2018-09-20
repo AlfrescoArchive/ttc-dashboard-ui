@@ -1,6 +1,6 @@
 {
   "/activiti-api": {
-    "target": "activiti-cloud-gateway.jx-staging.35.205.68.6.nip.io",
+    "target": "http://activiti-cloud-gateway.jx-staging.35.205.68.6.nip.io",
     "secure": false,
     "pathRewrite": {
       "^/activiti-api": ""
