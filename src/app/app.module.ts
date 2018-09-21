@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
@@ -23,6 +23,9 @@ import {
   MatTabsModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { KeycloakService, KeycloakAngularModule } from 'keycloak-angular';
+import { initializer } from './utils/app-init';
+import { AppAuthGuard } from './app.authguard';
 
 @NgModule({
   declarations: [
@@ -48,10 +51,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatSlideToggleModule,
     MatBadgeModule,
     MatChipsModule,
-    MatTabsModule
+    MatTabsModule,
+    KeycloakAngularModule
   ],
   providers: [
-    TwitterClientService
+    TwitterClientService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializer,
+      multi: true,
+      deps: [KeycloakService]
+    },
+    AppAuthGuard
   ],
   bootstrap: [AppComponent]
 })

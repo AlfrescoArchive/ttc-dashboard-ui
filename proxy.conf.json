@@ -1,6 +1,6 @@
 {
   "/activiti-api": {
-    "target": "http://ttc-infra-gateway/",
+    "target": "YOUR GATEWAY URL GOES HERE",
     "secure": false,
     "pathRewrite": {
       "^/activiti-api": ""
