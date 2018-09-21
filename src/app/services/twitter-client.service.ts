@@ -76,7 +76,7 @@ export class TwitterClientService {
   }
 
   isGatewayAvailable(): Observable<any> {
-    return this.http.get(this.BASE_URL + '/actuator/health');
+    return this.http.get(this.BASE_URL + '/v1/');
   }
 
   refreshGateway(): Observable<any> {
