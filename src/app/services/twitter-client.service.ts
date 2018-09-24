@@ -12,7 +12,7 @@ export class TwitterClientService {
   }
 
   getCampaigns(): Observable<any> {
-    return this.http.get(this.BASE_URL + '/v1/campaigns');
+    return this.http.get(this.BASE_URL + '/ttc-campaigns/v1/campaigns');
   }
 
   getPositiveTweets(id: String): Observable<any> {
