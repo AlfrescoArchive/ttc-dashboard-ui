@@ -12,7 +12,7 @@ export class TwitterClientService {
   }
 
   getCampaigns(): Observable<any> {
-    return this.http.get(this.BASE_URL + '/v1/campaigns');
+    return this.http.get(this.BASE_URL + '/ttc-campaigns/v1/campaigns');
   }
 
   getPositiveTweets(id: String): Observable<any> {
@@ -28,11 +28,11 @@ export class TwitterClientService {
   }
 
   getProcessedTweets(id: String): Observable<any> {
-    return this.http.get(this.BASE_URL + '/ttc-query-campaign/processed/v1/' + id + '?sort=lastModified,desc');
+    return this.http.get(this.BASE_URL + '/ttc-query-campaign/v1/processed/' + id + '?sort=lastModified,desc');
   }
 
   getRewardsTweets(id: String): Observable<any> {
-    return this.http.get(this.BASE_URL + '/ttc-connectors-reward/rewards/v1/' + id);
+    return this.http.get(this.BASE_URL + '/ttc-connectors-reward/v1/rewards/' + id);
   }
 
   startCampaign(): Observable<any> {
