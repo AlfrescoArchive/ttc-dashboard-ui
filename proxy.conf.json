@@ -1,6 +1,6 @@
 {
   "/activiti-api": {
-    "target": "YOUR GATEWAY URL GOES HERE",
+    "target": "http://activiti-cloud-gateway.activiti.envalfresco.com",
     "secure": false,
     "pathRewrite": {
       "^/activiti-api": ""

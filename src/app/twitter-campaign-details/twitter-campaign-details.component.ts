@@ -3,6 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TwitterClientService } from '../services/twitter-client.service';
 import { MatSort, MatTableDataSource } from '@angular/material';
 
+import { Apollo } from 'apollo-angular';
+import gql from 'graphql-tag';
+import { map } from 'rxjs/internal/operators';
+
 @Component({
   selector: 'app-twitter-campaign-details',
   templateUrl: './twitter-campaign-details.component.html',
@@ -32,7 +36,8 @@ export class TwitterCampaignDetailsComponent implements OnInit {
 
   constructor(private router: Router,
               private route: ActivatedRoute,
-              private twitterClientService: TwitterClientService) {
+              private twitterClientService: TwitterClientService,
+              private apollo: Apollo) {
   }
 
   ngOnInit() {
@@ -44,6 +49,24 @@ export class TwitterCampaignDetailsComponent implements OnInit {
       this.getProcessedTweets();
       this.getRewardsTweets();
     });
+
+
+
+    const commentsQuery = this.apollo.watchQuery<any>({
+      query: gql`
+{hello}
+`,
+      variables: {}
+    }).valueChanges
+      .pipe(
+        map(result => result.data.posts)
+      )
+      .subscribe({
+      next() {
+        console.log(arguments);
+      }
+    });
+
   }
 
   private getNegativeTweets() {

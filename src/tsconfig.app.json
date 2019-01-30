@@ -3,7 +3,13 @@
   "compilerOptions": {
     "outDir": "../out-tsc/app",
     "module": "es2015",
-    "types": []
+    "lib": [
+      "esnext",
+      "es2016",
+      "dom"
+    ],
+    "types": [],
+    "skipLibCheck": true
   },
   "exclude": [
     "src/test.ts",
